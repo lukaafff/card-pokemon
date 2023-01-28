@@ -3,6 +3,7 @@ const numero = document.querySelector('#numero');
 const pokeImagem = document.querySelector('#poke-imagem');
 const tipos = document.querySelector('.tipos');
 const pokedex = document.querySelector('.container');
+const nomePokemon = document.querySelector('.nome-pokemon');
 
 const form = document.querySelector('.form');
 
@@ -32,7 +33,7 @@ const coresTipos = {
 
 let searchPokemon = 1;
 
-const fetchPokemon = async (pokemon) => {
+const buscaPokemon = async (pokemon) => {
   const APIResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
 
   console.log(APIResponse)
@@ -40,39 +41,38 @@ const fetchPokemon = async (pokemon) => {
   if (APIResponse.status === 200) {
     const data = await APIResponse.json();
     return data;
+  } else {
+    alert('Esse pokemon não existe!')
   }
 }
 
+//mostrar todos os dados no html
 const renderPokemon = async (pokemon) => {
 
-  const data = await fetchPokemon(pokemon);
+  const data = await buscaPokemon(pokemon);
 
   if (data) {
     pokeImagem.style.display = 'block';
-    numero.innerHTML = '#' + data.id;
-    pokeImagem.src = data['sprites']['other']['home']['front_default'];
+    nomePokemon.innerHTML = data.name; //nome pokemon
+    numero.innerHTML = '#' + data.id; //id pokemon
+    pokeImagem.src = data['sprites']['other']['home']['front_default']; //imagem pokemon
     searchPokemon = data.id;
     //tipo do pokemon
-  tipos.innerHTML = '';
-  
+  tipos.innerHTML = ''; //tipo do pokemon
   data.types.forEach((t) => {
-      let newType = document.createElement('span');
+      let novoTipo = document.createElement('span');
       let color   = coresTipos[t.type.name];
   
-      newType.innerHTML = t.type.name;
-      newType.classList.add('tipo');
-      newType.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`; 
+      novoTipo.innerHTML = t.type.name;
+      novoTipo.classList.add('tipo');
+      novoTipo.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`; 
   
-      tipos.appendChild(newType);
+      tipos.appendChild(novoTipo);
   });
   }
   
   console.log(renderPokemon)
 }
-
-
-
-
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
