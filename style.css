@@ -1,0 +1,160 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Oxanium";
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    background-color: #e4e9f7;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+
+.container {
+	width: 350px;
+	height: 560px;
+	background-color: rgb(116, 203, 72);
+	border-radius: 10px;
+	padding: 5px;
+	transition: background-color 0.5s ease-in-out;
+}
+
+.card-header {	
+	height: 40%;
+	padding: 8px;
+	background-image: url(./img/pokeball.png);
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
+.header-pesquisa {
+	display: flex;
+	justify-content: space-between;
+	color: #fff;
+	padding: 8px;
+}
+
+#pesquisa {
+	z-index: 100 !important;
+	color: #fff;
+	background: none;
+	border: none;
+	padding: 10px;
+	font-size: 16px;
+	font-weight: 800;
+	width: 110%;
+	text-transform: capitalize;
+}
+
+#pesquisa:focus {
+	outline: none;
+}
+
+.img-poke {
+	display: flex;
+	justify-content: center;
+}
+
+#poke-imagem {
+	position: absolute;
+	bottom: 440px;
+	width: 270px;
+	height: 270px;
+	transform: translateY(120px);
+}
+
+.dados {
+	background-color: #fff;
+	height: 60%;
+	border-radius: 10px;
+	padding-top: 150px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.tipos {
+	display: flex;
+	justify-content: center;
+	gap: 16px;
+}
+
+.tipo {
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 40px;
+	font-size: 20px;
+	font-weight: 800;
+	text-transform: capitalize;
+}
+
+.btns {
+    position: absolute;
+    bottom: 19%;
+    left: 78.5%;
+    width: 65%;
+    transform: translate(-57%, 0);
+    display: flex;
+    gap: 20px;
+}
+
+.botao {
+	width: 12%;
+    padding: 0.5%;
+    border: 2px solid #000;
+    border-radius: 5px;
+    font-size: clamp(8px, 5vw, 1rem);
+    font-weight: 600;
+    color: #fff;
+    background-color: #444;
+    box-shadow: -1px 2px 0 #222, -2px 5px 0 #000;
+}
+
+.botao:active {
+    box-shadow: inset -4px 4px 0 #222;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+	.btns {
+		left: 74%;
+		bottom: 26%;
+	}
+
+	.botao {
+		width: 20%;
+	}
+}
+
+@media (max-width: 800px) {
+	.btns {
+		bottom: 29%;
+	}
+}
+
+@media (max-width: 428px) {
+	.btns {
+		left: 55%;
+		bottom: 18%;
+	}
+
+	.botao{
+		width: 50%;
+	}
+}
+
+@media (max-width: 320px) {
+	.btns {
+		bottom: 1%;
+	}
+}
