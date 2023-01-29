@@ -48,6 +48,8 @@ const buscaPokemon = async (pokemon) => {
 
 //mostrar todos os dados no html
 const renderPokemon = async (pokemon) => {
+    nomePokemon.innerHTML = 'Carregando ...';
+    numero.innerHTML = '';
 
   const data = await buscaPokemon(pokemon);
 
